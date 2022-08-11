@@ -1,12 +1,11 @@
 // options2.rs
 // Execute `rustlings hint options2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 fn main() {
     let optional_word = Some(String::from("rustlings"));
     // TODO: Make this an if let statement whose value is "Some" type
-    word = optional_word {
+    if let Some(word) = optional_word {
         println!("The word is: {}", word);
     } else {
         println!("The optional word doesn't contain anything");
@@ -14,12 +13,22 @@ fn main() {
 
     let mut optional_integers_vec: Vec<Option<i8>> = Vec::new();
     for x in 1..10 {
-        optional_integers_vec.push(Some(x));
+        if x == 5 {
+            optional_integers_vec.push(None);
+        } else {
+            optional_integers_vec.push(Some(x));
+        }
     }
 
     // TODO: make this a while let statement - remember that vector.pop also adds another layer of Option<T>
     // You can stack `Option<T>`'s into while let and if let
-    integer = optional_integers_vec.pop() {
-        println!("current value: {}", integer);
+    let mut elem_counter = 9;
+    while let Some(integer) = optional_integers_vec.pop() {
+        if let Some(i) = integer {
+            println!("current value: {}", i);
+        } else {
+            println!("Element {} not an integer", elem_counter);
+        }
+        elem_counter-=1;
     }
 }
